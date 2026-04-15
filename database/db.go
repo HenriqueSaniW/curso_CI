@@ -15,12 +15,19 @@ var (
 )
 
 func ConectaComBancoDeDados() {
+
+	sslmode := os.Getenv("SSLMODE")
+
+	if sslmode == "" {
+    	sslmode = "disable"
+	}
+	
     host := os.Getenv("HOST")
     user := os.Getenv("USER")
     password := os.Getenv("PASSWORD")
     dbname := os.Getenv("DBNAME")
     port := os.Getenv("DBPORT")
-    stringDeConexao := "host="+ host +" user=" + user + " password=" + password + " dbname=" + dbname + " port=" + port + " sslmode=require"
+    stringDeConexao := "host="+ host +" user=" + user + " password=" + password + " dbname=" + dbname + " port=" + port + " sslmode=" + sslmode
 
 	for i := 0; i < 10; i++ {
 		DB, err = gorm.Open(postgres.Open(stringDeConexao))
