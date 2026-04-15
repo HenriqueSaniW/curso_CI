@@ -19,7 +19,7 @@ func ConectaComBancoDeDados() {
     user := os.Getenv("USER")
     password := os.Getenv("PASSWORD")
     dbname := os.Getenv("DBNAME")
-    port := os.Getenv("DBPORT")
+    port := os.Getenv("PORTS")
     stringDeConexao := "host="+ host +" user=" + user + " password=" + password + " dbname=" + dbname + " port=" + port + " sslmode=disable"
 
 	for i := 0; i < 10; i++ {
